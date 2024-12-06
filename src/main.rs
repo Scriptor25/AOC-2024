@@ -180,9 +180,8 @@ fn main() {
     }
     let part_num = part.parse::<i32>().expect("failed to parse part");
 
-    let path = format!("input/{:02}/{:02}/input.txt", day_num, part_num);
-    let input = fs::read_to_string(path)
-        .expect(&format!("input missing for day {day_num} part {part_num}"));
+    let path = format!("input/{:02}.txt", day_num);
+    let input = fs::read_to_string(path).expect(&format!("input missing for day {day_num}"));
 
     let result = day_fn(day_num, part_num)(input);
     println!("result: {result}");

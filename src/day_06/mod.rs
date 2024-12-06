@@ -1,6 +1,7 @@
 pub mod part1;
 pub mod part2;
 
+#[derive(Clone, Copy)]
 struct Guard {
     x: i32,
     y: i32,

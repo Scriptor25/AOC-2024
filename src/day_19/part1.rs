@@ -1,3 +1,3 @@
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> usize {
     0
 }

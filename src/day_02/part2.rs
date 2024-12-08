@@ -47,6 +47,6 @@ fn is_safe(report: &str, levels: &Vec<i32>) -> bool {
     true
 }
 
-pub fn part2(input: String) -> i32 {
-    count_safe_reports(input, is_safe)
+pub fn part2(input: String) -> usize {
+    count_safe_reports(input, is_safe) as usize
 }

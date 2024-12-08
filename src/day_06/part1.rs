@@ -1,7 +1,7 @@
 use crate::day_06::{find_guard, get_in_front, inside_map, move_step, turn_right, Guard};
 use std::collections::HashMap;
 
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> usize {
     let map = input
         .lines()
         .map(|line| line.chars().collect::<Vec<char>>())
@@ -25,5 +25,5 @@ pub fn part1(input: String) -> i32 {
         move_step(&mut guard);
     }
 
-    path.len() as i32
+    path.len()
 }

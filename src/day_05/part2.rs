@@ -11,7 +11,7 @@ fn order_pages(pages: &mut Vec<i32>, orders: &Vec<(i32, i32)>) {
     });
 }
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> usize {
     for_each_pages(input, |pages, orders| {
         if !check_pages(pages, orders) {
             order_pages(pages, orders);
@@ -19,5 +19,5 @@ pub fn part2(input: String) -> i32 {
         } else {
             0
         }
-    })
+    }) as usize
 }

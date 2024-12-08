@@ -1,6 +1,6 @@
 use regex::Regex;
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> usize {
     let reg =
         Regex::new(r"(mul\((0|([1-9][0-9]*)),(0|([1-9][0-9]*))\))|(do\(\))|(don't\(\))").unwrap();
 
@@ -26,5 +26,5 @@ pub fn part2(input: String) -> i32 {
         }
     }
 
-    sum
+    sum as usize
 }

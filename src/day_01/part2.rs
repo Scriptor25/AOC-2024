@@ -1,6 +1,6 @@
 use crate::day_01::split_columns;
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> usize {
     let mut list1 = Vec::new();
     let mut list2 = Vec::new();
 
@@ -13,5 +13,5 @@ pub fn part2(input: String) -> i32 {
         similarity += li * count as i32;
     }
 
-    similarity
+    similarity as usize
 }

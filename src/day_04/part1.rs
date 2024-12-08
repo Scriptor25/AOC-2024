@@ -88,7 +88,7 @@ fn check_nw(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> boo
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> usize {
     let mut map = Vec::new();
     map_input(input, &mut map);
 

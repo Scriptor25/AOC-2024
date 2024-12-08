@@ -1,6 +1,6 @@
 use crate::day_04::map_input;
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> usize {
     let mut map = Vec::new();
     map_input(input, &mut map);
 

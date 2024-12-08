@@ -27,7 +27,7 @@ mod day_23;
 mod day_24;
 mod day_25;
 
-fn day_fn(day: i32, part: i32) -> fn(String) -> i32 {
+fn day_fn(day: i32, part: i32) -> fn(String) -> usize {
     match day {
         1 => match part {
             1 => day_01::part1::part1,

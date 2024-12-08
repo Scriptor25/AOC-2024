@@ -1,6 +1,6 @@
 use crate::day_01::split_columns;
 
-pub fn part1(input: String) -> i32 {
+pub fn part1(input: String) -> usize {
     let mut list1 = Vec::new();
     let mut list2 = Vec::new();
 
@@ -16,5 +16,5 @@ pub fn part1(input: String) -> i32 {
         sum += (num1 - num2).abs();
     }
 
-    sum
+    sum as usize
 }

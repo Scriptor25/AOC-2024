@@ -2,7 +2,7 @@ use crate::day_06::{find_guard, get_in_front, inside_map, map_at, move_step, tur
 use std::collections::HashSet;
 use std::io::{stdout, Write};
 
-pub fn part2(input: String) -> i32 {
+pub fn part2(input: String) -> usize {
     let map = input
         .lines()
         .map(|line| line.chars().collect::<Vec<char>>())

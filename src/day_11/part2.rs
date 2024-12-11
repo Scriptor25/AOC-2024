@@ -1,50 +1,42 @@
-use regex::Regex;
+use std::collections::HashMap;
 
 pub fn part2(input: String) -> usize {
-    let reg = Regex::new(r"\d+").expect("failed to compile regex");
+    let mut stones: HashMap<u64, usize> = HashMap::new();
 
-    let mut stones = reg
-        .captures_iter(input.as_str())
-        .map(|cap| {
-            cap.iter()
-                .map(|d| {
-                    d.unwrap()
-                        .as_str()
-                        .parse::<usize>()
-                        .expect("failed to parse number")
-                })
-                .last()
-                .unwrap()
-        })
-        .collect::<Vec<usize>>();
-
-    let mut step = || {
-        let mut i = 0;
-        while i < stones.len() {
-            let stone = stones[i];
-            if stone == 0 {
-                stones[i] = 1;
-                i += 1;
-                continue;
-            }
-            let stone_str = stone.to_string();
-            if stone_str.len() % 2 == 0 {
-                let (l_str, r_str) = stone_str.split_at(stone_str.len() / 2);
-                let l = l_str.parse::<usize>().expect("failed to parse number");
-                let r = r_str.parse::<usize>().expect("failed to parse number");
-                stones[i] = l;
-                stones.insert(i + 1, r);
-                i += 2;
-                continue;
-            }
-            stones[i] = stone * 2024;
-            i += 1;
-        }
-    };
-
-    for _ in 0..75 {
-        step();
+    for stone in input.split_whitespace().map(|s| s.parse::<u64>().unwrap()) {
+        *stones.entry(stone).or_insert(0) += 1;
     }
 
-    stones.len()
+    for _ in 0..75 {
+        let mut new_stones = HashMap::new();
+
+        for (&stone, &count) in &stones {
+            if stone == 0 {
+                *new_stones.entry(1).or_insert(0) += count;
+            } else if has_even_digits(stone) {
+                let (left, right) = split_even_digits(stone);
+                *new_stones.entry(left).or_insert(0) += count;
+                *new_stones.entry(right).or_insert(0) += count;
+            } else {
+                *new_stones.entry(stone * 2024).or_insert(0) += count;
+            }
+        }
+
+        stones = new_stones;
+    }
+
+    stones.values().sum()
+}
+
+fn has_even_digits(n: u64) -> bool {
+    let digits = n.to_string().len();
+    digits % 2 == 0
+}
+
+fn split_even_digits(n: u64) -> (u64, u64) {
+    let digits = n.to_string();
+    let mid = digits.len() / 2;
+    let left = digits[..mid].parse::<u64>().unwrap_or(0);
+    let right = digits[mid..].parse::<u64>().unwrap_or(0);
+    (left, right)
 }

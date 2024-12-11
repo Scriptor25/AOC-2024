@@ -1,6 +1,6 @@
 use crate::day_04::map_input;
 
-fn check_n(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_n(map: &Vec<Vec<char>>, x: usize, y: usize) -> bool {
     if y < 3 {
         return false;
     }
@@ -11,7 +11,7 @@ fn check_n(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_ne(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_ne(map: &Vec<Vec<char>>, w: usize, x: usize, y: usize) -> bool {
     if y < 3 || x >= w - 3 {
         return false;
     }
@@ -22,7 +22,7 @@ fn check_ne(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> boo
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_e(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_e(map: &Vec<Vec<char>>, w: usize, x: usize, y: usize) -> bool {
     if x >= w - 3 {
         return false;
     }
@@ -44,7 +44,7 @@ fn check_se(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> boo
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_s(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_s(map: &Vec<Vec<char>>, h: usize, x: usize, y: usize) -> bool {
     if y >= h - 3 {
         return false;
     }
@@ -55,7 +55,7 @@ fn check_s(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_sw(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_sw(map: &Vec<Vec<char>>, h: usize, x: usize, y: usize) -> bool {
     if y >= h - 3 || x < 3 {
         return false;
     }
@@ -66,7 +66,7 @@ fn check_sw(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> boo
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_w(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_w(map: &Vec<Vec<char>>, x: usize, y: usize) -> bool {
     if x < 3 {
         return false;
     }
@@ -77,7 +77,7 @@ fn check_w(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool
     cx == 'X' && cm == 'M' && ca == 'A' && cs == 'S'
 }
 
-fn check_nw(map: &Vec<Vec<char>>, w: usize, h: usize, x: usize, y: usize) -> bool {
+fn check_nw(map: &Vec<Vec<char>>, x: usize, y: usize) -> bool {
     if y < 3 || x < 3 {
         return false;
     }
@@ -103,28 +103,28 @@ pub fn part1(input: String) -> usize {
             if cell != 'X' {
                 continue;
             }
-            if check_n(&map, width, height, x, y) {
+            if check_n(&map, x, y) {
                 count += 1;
             }
-            if check_ne(&map, width, height, x, y) {
+            if check_ne(&map, width, x, y) {
                 count += 1;
             }
-            if check_e(&map, width, height, x, y) {
+            if check_e(&map, width, x, y) {
                 count += 1;
             }
             if check_se(&map, width, height, x, y) {
                 count += 1;
             }
-            if check_s(&map, width, height, x, y) {
+            if check_s(&map, height, x, y) {
                 count += 1;
             }
-            if check_sw(&map, width, height, x, y) {
+            if check_sw(&map, height, x, y) {
                 count += 1;
             }
-            if check_w(&map, width, height, x, y) {
+            if check_w(&map, x, y) {
                 count += 1;
             }
-            if check_nw(&map, width, height, x, y) {
+            if check_nw(&map, x, y) {
                 count += 1;
             }
         }

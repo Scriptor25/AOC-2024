@@ -1,7 +1,7 @@
 use crate::day_02::count_safe_reports;
 use std::cmp::Ordering;
 
-fn is_safe(report: &str, levels: &Vec<i32>) -> bool {
+fn is_safe(_report: &str, levels: &Vec<i32>) -> bool {
     enum Direction {
         None,
         Increasing,

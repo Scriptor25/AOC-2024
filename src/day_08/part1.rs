@@ -63,7 +63,7 @@ pub fn part1(input: String) -> usize {
 
     let mut count = 0;
 
-    for (freq, nodes) in node_map {
+    for (_, nodes) in node_map {
         for i in &nodes {
             for j in &nodes {
                 if i == j {

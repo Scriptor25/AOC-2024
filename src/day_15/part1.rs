@@ -1,3 +1,3 @@
-pub fn part1(input: String) -> usize {
+pub fn part1(_input: String) -> usize {
     0
 }

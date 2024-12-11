@@ -1,18 +1,3 @@
-use std::collections::VecDeque;
-
-fn print_blocks(blocks: &Vec<(usize, usize)>) {
-    blocks.iter().for_each(|&(block_idx, block_size)| {
-        for i in 0..block_size {
-            if block_idx == !0 {
-                print!(".");
-            } else {
-                print!("{}", block_idx);
-            }
-        }
-    });
-    println!();
-}
-
 pub fn part2(input: String) -> usize {
     let in_chars = input.chars().collect::<Vec<char>>();
 

@@ -20,7 +20,7 @@ pub fn part2(input: String) -> usize {
     for y in 0..height {
         let p = (100.0 * y as f32 / height as f32) as i32;
         print!("\r{:3}%", p);
-        stdout().flush();
+        let _ = stdout().flush();
         for x in 0..width {
             if (x == guard.x && y == guard.y) || map_at(&map, width, height, x, y) != '.' {
                 continue;
